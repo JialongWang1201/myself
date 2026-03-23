@@ -11,6 +11,7 @@ The current direction is:
 - capture structured evidence when something fails
 - explain fault impact before touching the board
 - keep AI advisory and evidence-bound, not in direct control of hardware
+- connect on-device telemetry to focused support repos instead of burying everything in one monolith
 
 ## Recent Updates
 
@@ -26,6 +27,8 @@ Recent additions:
 - stronger snapshot explanations with failure class, hypotheses, confidence, and evidence IDs
 - `AnalysisEngine` adapter seam so rule-based analysis can evolve toward hybrid AI-assisted RCA
 - hardware HIL gate flow for build, flash, bringup, and driver regressions
+- embedded `wire` crash diagnostics directly into `mkdbg-native` for fast UART crash readout
+- integrated `seam` causal analysis into the host workflow so event-ring captures decode into a causal chain instead of raw fault crumbs
 
 ## What I Built
 - FreeRTOS MPU-based protected runtime on STM32F446
@@ -35,6 +38,7 @@ Recent additions:
 - unified snapshot and fault slice output with machine-readable evidence
 - VM32 scenario engine for controlled behavior generation
 - host tooling for HIL, triage bundles, profile compare, and dashboard rendering
+- repo-aware `mkdbg` workflow that connects firmware state to `seam` and `wire`
 
 ## Why This Design
 I do not want low-level bringup to depend on intuition alone.
@@ -45,6 +49,7 @@ The point of this project is to make embedded failures inspectable:
 - if a fault appears, I should get evidence, not just a panic line
 
 That is why the project leans so hard into manifests, structured telemetry, and operator tooling.
+The recent split into focused support repos matters for the same reason: `MicroKernel-MPU` stays the system narrative, while `seam` and `wire` stay small and reusable.
 
 ## AI Direction
 The AI part here is intentionally narrow.
@@ -62,18 +67,21 @@ That makes the AI story defensible for low-level systems work.
 - bringup and dependency information share one source of truth instead of drifting tables
 - snapshot output is useful for both human triage and future model-assisted analysis
 - the strongest differentiator is the combination of protected RTOS, staged bringup, fault evidence, and host-side operator tooling
+- `seam` handles post-mortem causal reconstruction from event data, while `wire` handles immediate crash diagnostics over the same UART path
 
 ## Current Stack
 - MCU: STM32F446
 - OS: FreeRTOS MPU port
 - Runtime: VM32 scenario engine
-- Tooling: CMake, OpenOCD, UART CLI, Python host tools, HIL workflows
-- Analysis: rule-based snapshot engine with model adapter seam
+- Tooling: CMake, OpenOCD, UART CLI, `mkdbg`, Python host tools, HIL workflows
+- Analysis: rule-based snapshot engine with model adapter seam plus `seam` causal decode
+- Crash diagnostics: `wire` UART fault readout and optional GDB bridge
 
 ## Repo Pointers
 - Runtime / CLI: `src/main.c`
 - Bringup model: `src/bringup_phase.c`, `src/dependency_graph.c`
 - VM runtime: `src/vm32.c`, `include/vm32.h`
 - Snapshot / analysis: `src/analysis_engine.c`, `tools/triage_bundle.py`
-- Dashboard / host tooling: `tools/bringup_ui.py`, `tools/vm32`
+- Dashboard / host tooling: `tools/bringup_ui.py`, `tools/vm32`, `build_host/mkdbg-native`
+- Support repos: `tools/seam`, `tools/wire`
 - Generated bringup docs: `docs/generated/bringup_manifest.md`
