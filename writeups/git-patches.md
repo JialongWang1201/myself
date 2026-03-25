@@ -10,6 +10,11 @@ In total, I sent **5 patches** across the series. Some were small cleanups, some
 
 That was the real value of the process. The patches mattered, but the review discipline mattered more.
 
+## Patchs States
+- Patch: apply: report the location of corrupt patches
+- Merged into `next` branch
+- Commit: https://github.com/git/git/commit/18e9b8f
+
 ## What the Work Actually Felt Like
 Working on Git patches did not feel like shipping app code quickly. It felt closer to low-level systems work:
 - every change needed a strong reason
