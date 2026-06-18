@@ -8,56 +8,82 @@
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
+  <header class="global-nav">
+    <nav class="global-nav-inner" aria-label="Primary">
+      <a class="brand" href="index.html">Jialong Wang</a>
+      <a href="#about">About</a>
+      <a href="#writeups">Writeups</a>
+      <a href="#notes">Notes</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
   <main>
     <div class="path">(root)/index.html</div>
     <div class="rule"></div>
 
-    <h1>Jialong Wang</h1>
-    <div class="nav">
-      <a href="#writeups">Writeups</a>
-      <a href="#notes">Notes</a>
-      <a href="#contact">Contact</a>
-    </div>
+    <section class="hero">
+      <p class="eyebrow">Systems software. Firmware. Network infrastructure.</p>
+      <h1>Jialong Wang</h1>
+      <p class="hero-copy">I build close to the hardware boundary, where clocks, buses, routers, logs, and validation pipelines have to agree.</p>
+      <p class="hero-links">
+        <a href="#writeups">Read the work</a>
+        <a href="#contact">Get in touch</a>
+      </p>
+    </section>
 
-    <p>With these pages I aim to document and discuss the interests and endeavors I take on over time. That said, deriving value from the gobbledygook will be left as an exercise to the reader.</p>
+    <section class="content-band" id="about">
+      <h2>About Me</h2>
+      <p>I got hooked the first time a board stayed silent and the only way forward was a scope trace and a stubborn hypothesis.</p>
+      <p>I gravitate to the lowest layers: clocks, registers, buses, and the thin slice of firmware that makes hardware honest. Most of my work is bring-up, driver debugging, and building repeatable validation pipelines. I like systems that can explain themselves, where every log line and timing edge has a reason.<span class="cursor"></span></p>
+      <div class="status-callout">
+        <p class="status-label">Status Update / Summer 2026</p>
+        <p class="status-title">Working on TRex integration with Cisco 8000 NPU traffic generation as a Software Engineer II Intern.</p>
+      </div>
+    </section>
 
-    <h2 id="about">About Me</h2>
-    <p>I got hooked the first time a board stayed silent and the only way forward was a scope trace and a stubborn hypothesis.</p>
-    <p>I gravitate to the lowest layers: clocks, registers, buses, and the thin slice of firmware that makes hardware honest. Most of my work is bring-up, driver debugging, and building repeatable validation pipelines. I like systems that can explain themselves, where every log line and timing edge has a reason.<span class="cursor"></span></p>
-    <div class="status-callout">
-      <p class="status-label">Status Update / Summer 2026</p>
-      <p class="status-title">Working on TRex integration with Cisco 8000 NPU traffic generation as a Software Engineer II Intern.</p>
-    </div>
+    <section class="content-band" id="writeups">
+      <div class="section-heading">
+        <h2>Writeups</h2>
+        <p>Longer notes on systems, bring-up, validation, and infrastructure work.</p>
+      </div>
+      <ul class="listing">
+        <li><a href="writeups/cisco-trex-tgen.html">Cisco 8000 NPU TGen: TRex-compatible traffic testing</a> <span class="date">Ongoing</span></li>
+        <li><a href="writeups/git-patches.html">Sending patches to Git: review discipline, revisions</a> <span class="date">2026-03</span></li>
+        <li><a href="writeups/tahoeos.html">TahoeOS: smartwatch firmware, bootloader, and BLE control path</a> <span class="date">Ongoing</span></li>
+        <li><a href="writeups/microkernel-mpu.html">MicroKernel-MPU: hardware-first bringup and fault triage</a> <span class="date">Ongoing</span></li>
+        <li><a href="writeups/firmware-bringup.html">ARM SoC bring-up: early-stage failures and stability fixes</a> <span class="date">2025-08</span></li>
+        <li><a href="writeups/cv-inspection.html">Production computer vision inspection pipeline</a> <span class="date">2024-08</span></li>
+        <li><a href="writeups/freertos-sensing.html">FreeRTOS firmware for continuous environmental sensing</a> <span class="date">2024-04</span></li>
+        <li><a href="writeups/bms-validation.html">BMS validation automation and signal integrity</a> <span class="date">2022-09</span></li>
+        <li><a href="writeups/data-pipeline.html">Compliance data pipeline for 4M+ records</a> <span class="date">2021-08</span></li>
+      </ul>
+    </section>
 
-    <h2 id="writeups">Writeups</h2>
-    <ul class="listing">
-      <li><a href="writeups/cisco-trex-tgen.html">Cisco 8000 NPU TGen: TRex-compatible traffic testing</a> <span class="date">Ongoing</span></li>
-      <li><a href="writeups/git-patches.html">Sending patches to Git: review discipline, revisions</a> <span class="date">2026-03</span></li>
-      <li><a href="writeups/tahoeos.html">TahoeOS: smartwatch firmware, bootloader, and BLE control path</a> <span class="date">Ongoing</span></li>
-      <li><a href="writeups/microkernel-mpu.html">MicroKernel-MPU: hardware-first bringup and fault triage</a> <span class="date">Ongoing</span></li>
-      <li><a href="writeups/firmware-bringup.html">ARM SoC bring-up: early-stage failures and stability fixes</a> <span class="date">2025-08</span></li>
-      <li><a href="writeups/cv-inspection.html">Production computer vision inspection pipeline</a> <span class="date">2024-08</span></li>
-      <li><a href="writeups/freertos-sensing.html">FreeRTOS firmware for continuous environmental sensing</a> <span class="date">2024-04</span></li>
-      <li><a href="writeups/bms-validation.html">BMS validation automation and signal integrity</a> <span class="date">2022-09</span></li>
-      <li><a href="writeups/data-pipeline.html">Compliance data pipeline for 4M+ records</a> <span class="date">2021-08</span></li>
-    </ul>
+    <section class="content-band" id="notes">
+      <div class="section-heading">
+        <h2>Notes</h2>
+        <p>Shorter field notes, checklists, and debug workflows.</p>
+      </div>
+      <ul class="listing">
+        <li><a href="notes/mcu-seam-wire.html">MicroKernel-MPU, seam, and wire: one debug story</a> <span class="date">2026-03</span></li>
+        <li><a href="notes/bringup-debug.html">Bring-up debug checklist</a> <span class="date">2025-09</span></li>
+        <li><a href="notes/driver-gotchas.html">I2C/SPI/UART timing gotchas</a> <span class="date">2025-06</span></li>
+        <li><a href="notes/cv-pipeline.html">Production CV pipeline notes</a> <span class="date">2024-06</span></li>
+        <li><a href="notes/freertos-debug.html">FreeRTOS scheduling triage</a> <span class="date">2025-08</span></li>
+        <li><a href="notes/mpu-sandbox.html">MPU sandbox permission faults</a> <span class="date">2025-07</span></li>
+        <li><a href="notes/uart-cli.html">UART CLI fast debug workflow</a> <span class="date">2025-06</span></li>
+      </ul>
+    </section>
 
-    <h2 id="notes">Notes</h2>
-    <ul class="listing">
-      <li><a href="notes/mcu-seam-wire.html">MicroKernel-MPU, seam, and wire: one debug story</a> <span class="date">2026-03</span></li>
-      <li><a href="notes/bringup-debug.html">Bring-up debug checklist</a> <span class="date">2025-09</span></li>
-      <li><a href="notes/driver-gotchas.html">I2C/SPI/UART timing gotchas</a> <span class="date">2025-06</span></li>
-      <li><a href="notes/cv-pipeline.html">Production CV pipeline notes</a> <span class="date">2024-06</span></li>
-      <li><a href="notes/freertos-debug.html">FreeRTOS scheduling triage</a> <span class="date">2025-08</span></li>
-      <li><a href="notes/mpu-sandbox.html">MPU sandbox permission faults</a> <span class="date">2025-07</span></li>
-      <li><a href="notes/uart-cli.html">UART CLI fast debug workflow</a> <span class="date">2025-06</span></li>
-    </ul>
-
-    <h2 id="contact">Contact</h2>
-    <ul>
-      <li>Email: <a href="mailto:jerrywang1201@gmail.com">jerrywang1201@gmail.com</a></li>
-      <li>GitHub: <a href="https://github.com/jialongwang1201" target="_blank" rel="noopener">jialongwang1201</a></li>
-    </ul>
+    <section class="content-band contact-band" id="contact">
+      <h2>Contact</h2>
+      <p>
+        <a href="mailto:jerrywang1201@gmail.com">jerrywang1201@gmail.com</a>
+        <span class="contact-separator">/</span>
+        <a href="https://github.com/jialongwang1201" target="_blank" rel="noopener">GitHub</a>
+      </p>
+    </section>
 
     <p class="meta">No tracking. No ads. No JS frameworks.</p>
     <div class="footer">
