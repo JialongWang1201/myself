@@ -1,7 +1,7 @@
 # Cisco 8000 NPU TGen: TRex-Compatible Traffic Testing
 
 *Software Engineer II Intern — Cisco IOS XR MIG Platform Dependent*  
-*Summer 2026*
+*August 2026*
 
 ## Summary
 During my internship at Cisco, I worked on turning the Cisco 8000's native NPU traffic generator into a TRex-compatible, end-to-end traffic validation system. Existing tools could keep using familiar TREx concepts—ports, streams, traffic control, flow statistics, and events—while the router's own hardware remained responsible for generating packets.
